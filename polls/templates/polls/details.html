@@ -1,0 +1,12 @@
+<h1>{{questions.question}}</h1>
+{%if error_message%}
+    <p><strong>{{error_message}}</strong></p>
+{%endif%}
+<form action="" method="POST">
+    {%csrf_token%}
+    {%for answer in options%}
+        <input type="radio" name="choice" id="choice{{ forloop.counter}}" value="{{option.id}}"/>
+        <label for="choice{{ forloop.counter}}">{{option.options_text}}</label><br>
+    {%endfor%}
+    <input type="submit" value="vote">
+</form>
