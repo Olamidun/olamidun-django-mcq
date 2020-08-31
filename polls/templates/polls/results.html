@@ -4,8 +4,10 @@
     <div>
         {% if score.score >= 75 %}
             <p>Your Score is: {{ score.score }}% you passed</p>
+            <p>Congratlations</p>
         {% else %}
             <p>Your Score is: {{ score.score }}% you failed :(</p>
+            <p>Oops. Try again next time</p>
         {% endif %}
         You can log out now: <a href="{% url 'logout' %}">logout</a>
     </div>
