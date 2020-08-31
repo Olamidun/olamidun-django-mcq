@@ -13,7 +13,9 @@ from django.contrib import messages
 
 
 def home(request):
-    return render(request, 'polls/home.html')
+    stories = Quiz.objects.all()
+    context = {'stories': stories}
+    return render(request, 'polls/home.html', stories)
 
 @login_required
 def questions_view(request):

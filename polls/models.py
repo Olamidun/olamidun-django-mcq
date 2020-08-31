@@ -1,32 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-#
-# class Answer(models.Model):
-#     question = models.ForeignKey('Question', on_delete=models.CASCADE, related_name='questions')
-#     option = models.CharField(max_length=100)
-#     is_correct = models.BooleanField(default=False)
-#
-#     def __str__(self):
-#         return self.option
-#
-#
-# class Question(models.Model):
-#     question = models.CharField(max_length=200)
-#     answer = models.CharField(max_length=200)
-#
-#     def __str__(self):
-#         return self.question
-#
-#
-# class UserAnswer(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     question = models.ForeignKey(Question, on_delete=models.CASCADE)
-#     answer = models.CharField(max_length=200)
-#
-#     def __str__(self):
-#         return self.answer
-
 
 class Quiz(models.Model):
     story = models.TextField()
@@ -46,14 +20,6 @@ class Questions(models.Model):
     def __str__(self):
         return self.question
 
-
-# class UserAnswer(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     question = models.ForeignKey(Questions, on_delete=models.CASCADE)
-#     answer = models.CharField(max_length=200)
-#
-#     def __str__(self):
-#         return self.answer
 
 class QuizTaker(models.Model):
     # quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, null=True, blank=True)
