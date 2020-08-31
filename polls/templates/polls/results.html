@@ -1,5 +1,11 @@
 <h1>{{questions.question}}</h1>
-<ul>
-    {{ question }}
-</ul>
-<a href="">vote again?</a>
+
+    <div>
+        {% if score >= 75 %}
+            <p>Your Score is: {{ score }}% you passed</p>
+        {% else %}
+            <p>Your Score is: {{ score }}% you failed :(</p>
+        {% endif %}
+    </div>
+
+<a href="{% url 'users:login' %}">Login again?</a>
