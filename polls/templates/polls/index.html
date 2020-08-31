@@ -1,26 +1,33 @@
-{%if questions%}
-    {% if messages %}
-        {% for message in messages %}
-            {% if message.error %}
-                <div class="alert  alert-{{ message.tags }} container" role="main">
-                {{ message }}
+{% extends 'polls/base.html' %}
+{% block content %}
+    {%if questions%}
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.error %}
+                    <div class="alert  alert-{{ message.tags }} container" role="main">
+                    {{ message }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <form method="POST" class="question-form">
+            {% csrf_token %}
+            {%for question in questions %}
+                {{ forloop.counter }} <p class="question">{{ question.question }}</p>
+                <div class="radio-group">
+                    <label class="radio"><input class="question-label" type="radio" name="{{question.id}}" id="option1" value="{{question.option1}}">{{ question.option1 }}</label><br>
+                    <label class="radio"><input class="question-label" type="radio" name="{{question.id}}" id="option2" value="{{question.option2}}">{{ question.option2 }}</label><br>
+                    <label class="radio"><input class="question-label" type="radio" name="{{question.id}}" id="option3" value="{{question.option3}}">{{ question.option3 }}</label><br>
+                    <label class="radio"><input class="question-label" type="radio" name="{{question.id}}" id="option4" value="{{question.option4}}">{{ question.option4 }}</label><br>
                 </div>
-            {% endif %}
-        {% endfor %}
-    {% endif %}
-    <form method="POST">
-        {% csrf_token %}
-        {%for question in questions %}
-            <p>{{ question.question }}</p>
+            {%endfor%}
+            <input type="submit" value="Submit">
+        </form>
+    {%else%}
+    <p>No polls are available</p>
+    {%endif%}
+{% endblock %}
 
-            <label><input type="radio" name="{{question.id}}" id="option1" value="{{question.option1}}">{{ question.option1 }}</label><br>
-
-            <label><input type="radio" name="{{question.id}}" id="option2" value="{{question.option2}}">{{ question.option2 }}</label><br>
-            <label><input type="radio" name="{{question.id}}" id="option3" value="{{question.option3}}">{{ question.option3 }}</label><br>
-            <label><input type="radio" name="{{question.id}}" id="option4" value="{{question.option4}}">{{ question.option4 }}</label><br>
-        {%endfor%}
-        <input type="submit" value="Submit">
-    </form>
 {#    <div>#}
 {#        {% if questions.has_other_pages %}#}
 {#            {% if questions.has_previous %}#}
@@ -38,6 +45,3 @@
 {#            {% endif %}#}
 {#        {% endif %}#}
 {#    </div>#}
-{%else%}
-    <p>No polls are available</p>
-{%endif%}

@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+    font-size: 16px;
+    background-color: #242524;
+    color: #edf0f1;
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    float: right;
+    display: inline-block;
+    justify-content: space-between;
+}
+
+li, a{
+    color: #edf0f1;
+}
+.nav-links li{
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.nav-links li a{
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+}
+
+.nav-links li a:hover{
+    color: #0088a9;
+}
+
+button{
+    background-color: rgba(0, 136, 169, 1);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+button:hover{
+    background-color: rgba(0, 136, 169, 0.8);
+}
+
+
+.story{
+    /*color: #000000;*/
+    margin-top: 50px;
+    text-align: center;
+}
+.quiz-button{
+    border-radius: 30px;
+    text-decoration: none;
+}
+
+.question-form{
+    margin-left: 10px;
+}
+.question{
+    margin-top: 10px;
+}
+.question-label{
+    margin-top: 10px;
+    margin-right: 8px;
+}
+.radio-group{
+    padding-top: 10px;
+    border-bottom: 1px solid #edf0f1;
+}

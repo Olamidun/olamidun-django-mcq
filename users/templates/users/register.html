@@ -7,14 +7,11 @@
 <body>
     <p>Register here</p>
     <div>
-        <form action="{% url 'users:register' %}" method="POST">
+        <form method="POST">
             {% csrf_token %}
-            <input type="text" name="username" value="{{ data.username }}" placeholder="Enter your username" required >
-            <input type="email" name="email" placeholder="Your Email"  required >
-            <input type="password" name="password" placeholder="Enter your password" style="margin-bottom: 10px; height: 36px;" required><br>
-            <input type="password" name="password2" placeholder="Enter password for confirmation" style="margin-bottom: 10px; height: 36px" required><br>
+            {{ form.as_p }}
             <button type="submit" class="btn btn-sm btn-primary">Register</button>
-           <p>Already have an account? <a href="{% url 'users:login' %}">Login Here</a></p>
+{#           <p>Already have an account? <a href="{% url 'users:login' %}">Login Here</a></p>#}
         </form>
     </div>
 </body>

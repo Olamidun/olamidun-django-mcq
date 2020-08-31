@@ -7,10 +7,9 @@
 <body>
     <p>Login Here</p>
     <div>
-        <form action="{% url 'polls:home' %}" method="POST">
+        <form method="POST">
             {% csrf_token %}
-            <input type="email" name="email" placeholder="Your Email"  required><br>
-            <input type="password" name="password" placeholder="Enter your password" required><br>
+            {{form.as_p}}
             <button type="submit" class="btn btn-sm btn-primary">Login</button>
         </form>
     </div>

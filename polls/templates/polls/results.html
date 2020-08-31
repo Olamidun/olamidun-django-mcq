@@ -1,11 +1,15 @@
-<h1>{{questions.question}}</h1>
-
+{% extends 'polls/base.html' %}
+{% block content %}
+    <h1>{{questions.question}}</h1>
     <div>
-        {% if score >= 75 %}
-            <p>Your Score is: {{ score }}% you passed</p>
+        {% if score.score >= 75 %}
+            <p>Your Score is: {{ score.score }}% you passed</p>
         {% else %}
-            <p>Your Score is: {{ score }}% you failed :(</p>
+            <p>Your Score is: {{ score.score }}% you failed :(</p>
         {% endif %}
+        You can log out now: <a href="{% url 'login' %}">logout</a>
     </div>
+{% endblock %}
 
-<a href="{% url 'users:login' %}">Login again?</a>
+
+{#<a href="{% url 'users:login' %}">Login again?</a>#}

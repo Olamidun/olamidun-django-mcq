@@ -1,26 +1,20 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
+from django.shortcuts import render, redirect, HttpResponse
+from .forms import UserRegistrationForm
+from django.contrib import messages
 
 # Create your views here.
 
 
 def register(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        password2 = request.POST.get('password2')
-
-        if password == password2 and len(password) > 6:
-            user = User.objects.create_user(username=username, email=email)
-            user.set_password(password)
-            user.save()
-            return redirect('users:login')
-        elif password != password2:
-            # messages.success(request, 'Please ensure your passwords are the same.')
-            return redirect('users:register')
-        elif len(password) <= 6:
-            # messages.success(request, 'Passwords must have a minimum of 7 characters!')
-            return redirect('users:register')
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'{username} you have successfully created an account, you are now able to login')
+            return redirect('login')
+        else:
+            return HttpResponse('Invalid details')
     else:
-        return render(request, 'users/register.html')
+        form = UserRegistrationForm()
+        return render(request, 'users/register.html', {'form': form})

@@ -1,15 +1,16 @@
 from django.contrib import admin
-from .models import Questions, UserScore
+from .models import Questions, Quiz, QuizTaker
 
 # Register your models here.
 
 
-class UserScoreAdmin(admin.ModelAdmin):
-    list_display = ['user', 'score']
-    list_display_links = ['user', 'score']
-    search_fields = ['user__username']
+class QuizTakerAdmin(admin.ModelAdmin):
+    list_display = ['quiz_taker', 'score']
+    list_display_links = ['quiz_taker', 'score']
+    search_fields = ['quiz_taker__username']
 
 
 admin.site.register(Questions)
-admin.site.register(UserScore, UserScoreAdmin)
+admin.site.register(Quiz)
+admin.site.register(QuizTaker, QuizTakerAdmin)
 

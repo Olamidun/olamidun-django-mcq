@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>MCQ</title>
+    <link rel="stylesheet" href="{% static 'css/mcq.css' %}">
+</head>
+<body>
+{#    <header>#}
+{#        <nav>#}
+{#            <ul class="nav-links">#}
+{#                <li>Olamidun-MCQ</li>#}
+{#                <li><a href="{% url 'users:login' %}">Login</a></li>#}
+{#                <li><a href="{% url 'users:register' %}">Register</a></li>#}
+{#            </ul>#}
+{#        </nav>#}
+{#    </header>#}
+    <div>
+        {% if messages %}{% endif %}
+        {% for message in messages %}
+            <div>
+                <h5 style="color: green">{{ message }}</h5>
+            </div>
+        {% endfor %}
+        {% block content %}
+
+        {% endblock %}
+    </div>
+</body>
+</html>

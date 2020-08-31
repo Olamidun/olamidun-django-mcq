@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<a href="{% url 'polls:index' %}">start quiz</a>
-</body>
-</html>
+{% extends 'polls/base.html' %}
+{% block content %}
+    <div class="story">
+        <h2>This is the story on which you will answer questions</h2>
+        <div>Instructions:
+            <p>Ensure you answer all question, failure to answer all questions means your answers won't be submitted</p>
+            <p>The answers do not autosave, after answering all questions click on submit answer button to check your score instantly</p>
+            <p>After seeing your result, click on the logout button.</p>
+        </div>
+        <a class="quiz-button" href="{% url 'polls:index' %}"><button>start quiz</button></a>
+    </div>
+
+{% endblock %}

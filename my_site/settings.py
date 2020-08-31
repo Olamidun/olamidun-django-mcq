@@ -124,5 +124,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIR = os.path.join(BASE_DIR, 'static')
 
-# LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = 'users:login'
+LOGIN_REDIRECT_URL = 'polls:home'
+LOGIN_URL = 'login'
