@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
+<body style="background-color: #242524; color:#edf0f1">
     <p>Login Here</p>
     <div>
         <form method="POST">
             {% csrf_token %}
             {{form.as_p}}
             <button type="submit" class="btn btn-sm btn-primary">Login</button>
+            <p>Already have an account? <a href="{% url 'login' %}">Login Here</a></p>
         </form>
     </div>
 </body>

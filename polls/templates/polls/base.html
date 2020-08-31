@@ -7,15 +7,19 @@
     <link rel="stylesheet" href="{% static 'css/mcq.css' %}">
 </head>
 <body>
-{#    <header>#}
-{#        <nav>#}
-{#            <ul class="nav-links">#}
-{#                <li>Olamidun-MCQ</li>#}
-{#                <li><a href="{% url 'users:login' %}">Login</a></li>#}
-{#                <li><a href="{% url 'users:register' %}">Register</a></li>#}
-{#            </ul>#}
-{#        </nav>#}
-{#    </header>#}
+    <header>
+        <nav>
+            <ul class="nav-links">
+                {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
     <div>
         {% if messages %}{% endif %}
         {% for message in messages %}
